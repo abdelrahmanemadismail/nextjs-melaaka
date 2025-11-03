@@ -41,25 +41,25 @@ export default function SellHeader() {
   return (
     <>
       <header className="flex items-center justify-between py-3 px-3 md:px-8 lg:px-10 border-b w-full">
-        <button 
+        <button
           className="flex items-center text-foreground hover:text-primary transition-colors"
           onClick={handleLeave}
         >
           <X className="h-6 w-6 mr-2" />
           <span className="text-base font-medium">{t.common.leave}</span>
         </button>
-        
+
         <div className="flex-1 flex justify-center">
           <Image
             src="/logo.svg"
-            alt="ASWAQ Online"
+            alt="ASWAQDEAL"
             width={200}
             height={60}
             className="h-20 w-auto"
             priority
           />
         </div>
-        
+
         <div >
           <LanguageSwitcher />
         </div>

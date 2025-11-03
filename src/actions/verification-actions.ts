@@ -39,15 +39,15 @@ const sendVerificationRequestNotification = async (request: VerificationRequest,
   const transporter = await createTransporter()
   if (!transporter) return false
 
-  const supportEmail = process.env.SUPPORT_EMAIL || 'support@aswaq.online'
-  const systemFromEmail = process.env.SMTP_FROM_EMAIL || 'noreply@aswaq.online'
-  const adminUrl = process.env.NEXT_PUBLIC_URL ? 
-    `${process.env.NEXT_PUBLIC_URL}/admin/verifications` : 
+  const supportEmail = process.env.SUPPORT_EMAIL || 'support@aswaqdeal.com'
+  const systemFromEmail = process.env.SMTP_FROM_EMAIL || 'noreply@aswaqdeal.com'
+  const adminUrl = process.env.NEXT_PUBLIC_URL ?
+    `${process.env.NEXT_PUBLIC_URL}/admin/verifications` :
     'http://localhost:3000/admin/verifications'
 
   try {
     const html = await prepareVerificationRequestEmail(request, userName, adminUrl)
-    
+
     await transporter.sendMail({
       from: systemFromEmail,
       to: supportEmail,
@@ -68,7 +68,7 @@ export async function submitVerificationRequest(
   existingRequestId?: string
 ) {
   const supabase = await createClient()
-  
+
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) throw new Error('Not authenticated')
 
@@ -93,7 +93,7 @@ export async function submitVerificationRequest(
       .upload(filePath, file)
 
     if (uploadError) throw uploadError
-    
+
     documentUrls.push(filePath)
   }
 
@@ -104,9 +104,9 @@ export async function submitVerificationRequest(
       .from('verification_requests')
       .select('document_urls')
       .eq('id', existingRequestId)
-    
+
     if (fetchError) throw fetchError
-    
+
     // Check if we found the request
     const existingRequest = existingRequests?.[0]
     if (!existingRequest) {
@@ -144,9 +144,9 @@ export async function submitVerificationRequest(
       })
       .eq('id', existingRequestId)
       .select()
-    
+
     if (error) throw error
-    
+
     // Handle response data
     const updatedRequest = data?.[0]
     if (!updatedRequest) {
@@ -178,9 +178,9 @@ export async function submitVerificationRequest(
       .from('verification_requests')
       .insert(verificationData)
       .select()
-    
+
     if (error) throw error
-    
+
     // Handle response data
     const newRequest = data?.[0]
     if (!newRequest) {
@@ -204,7 +204,7 @@ export async function submitVerificationRequest(
 
 export async function getVerificationRequest() {
   const supabase = await createClient()
-  
+
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return null
 
@@ -214,16 +214,16 @@ export async function getVerificationRequest() {
     .eq('user_id', user.id)
     .order('created_at', { ascending: false })
     .limit(1)
-  
+
   if (error) throw error
-  
+
   // Return the first request or null if none found
   return (data && data.length > 0) ? data[0] as VerificationRequest : null
 }
 
 export async function cancelVerificationRequest() {
   const supabase = await createClient()
-  
+
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) throw new Error('Not authenticated')
 
@@ -233,9 +233,9 @@ export async function cancelVerificationRequest() {
     .select('document_urls')
     .eq('user_id', user.id)
     .limit(1)
-  
+
   if (fetchError) throw fetchError
-  
+
   const request = data?.[0]
   if (request?.document_urls) {
     // Delete documents from storage

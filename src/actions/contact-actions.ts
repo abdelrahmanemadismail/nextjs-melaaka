@@ -52,16 +52,16 @@ const sendSupportNotification = async (formData: ContactFormData) => {
   const transporter = await createTransporter()
   if (!transporter) return false
 
-  const supportEmail = process.env.SUPPORT_EMAIL || 'support@aswaq.online'
-  const systemFromEmail = process.env.SMTP_FROM_EMAIL || 'noreply@aswaq.online'
+  const supportEmail = process.env.SUPPORT_EMAIL || 'support@aswaqdeal.com'
+  const systemFromEmail = process.env.SMTP_FROM_EMAIL || 'noreply@aswaqdeal.com'
 
   try {
-    // Use format "User Name <noreply@aswaq.online>" to make it appear from the user
+  // Use format "User Name <noreply@aswaqdeal.com>" to make it appear from the user
     // while actually sending from your system email
     const fromName = `${formData.firstName} ${formData.lastName}`
-    
+
     const html = await prepareSupportNotificationEmail(formData)
-    
+
     await transporter.sendMail({
       from: `"${fromName}" <${systemFromEmail}>`,
       replyTo: formData.email,
@@ -84,20 +84,20 @@ const sendUserConfirmation = async (formData: ContactFormData, locale: string = 
   // Simple localization for confirmation email
   const translations = {
     en: {
-      subject: 'Thank you for contacting Aswaq Online',
+      subject: 'Thank you for contacting AswaqDeal',
       greeting: `Dear {{firstName}},`,
-      message: 'Thank you for contacting Aswaq Online. We have received your message and will get back to you as soon as possible.',
+      message: 'Thank you for contacting AswaqDeal. We have received your message and will get back to you as soon as possible.',
       reference: 'For your reference, here is a copy of your message:',
       closing: 'Best regards,',
-      team: 'The Aswaq Online Team'
+      team: 'The AswaqDeal Team'
     },
     ar: {
-      subject: 'شكراً للتواصل مع أسواق أونلاين',
+      subject: 'شكراً للتواصل مع AswaqDeal',
       greeting: `عزيزي {{firstName}}،`,
-      message: 'شكراً للتواصل مع أسواق أونلاين. لقد استلمنا رسالتك وسنرد عليك في أقرب وقت ممكن.',
+      message: 'شكراً للتواصل معنا. لقد استلمنا رسالتك وسنرد عليك في أقرب وقت ممكن.',
       reference: 'للرجوع إليها، إليك نسخة من رسالتك:',
       closing: 'مع أطيب التحيات،',
-      team: 'فريق أسواق أونلاين'
+      team: 'فريق AswaqDeal'
     }
   }
 
@@ -164,7 +164,7 @@ export async function submitContactForm(formData: FormData) {
           sendSupportNotification(validatedData),
           sendUserConfirmation(validatedData, locale)
         ])
-        
+
         // Redirect to the thank you page even if DB storage failed
         redirect(`/${locale}/contact/thank-you`)
       }
@@ -181,19 +181,19 @@ export async function submitContactForm(formData: FormData) {
     if (!supportEmailSent) {
       console.warn('Failed to send support notification email')
     }
-    
+
     if (!userEmailSent) {
       console.warn('Failed to send user confirmation email')
     }
-    
+
     // Redirect to the thank you page
     // redirect(`/${locale}/contact/thank-you`)
     return {success: true}
   } catch (error) {
     console.error('Error submitting contact form:', error)
-    return { 
-      success: false, 
-      error: error instanceof z.ZodError 
+    return {
+      success: false,
+      error: error instanceof z.ZodError
         ? error.errors.map(e => `${e.path}: ${e.message}`).join(', ')
         : 'Failed to submit contact form'
     }

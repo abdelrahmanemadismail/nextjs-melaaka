@@ -8,7 +8,7 @@ export function getStripe(): Stripe {
     stripeInstance = new Stripe(process.env.STRIPE_SECRET_KEY||"", {
       apiVersion: '2025-01-27.acacia', // Use the latest API version
       appInfo: {
-        name: 'ASWAQ Online',
+  name: 'ASWAQDEAL',
         version: '1.0.0',
       },
     });
@@ -72,7 +72,7 @@ export async function verifyCheckoutSession(sessionId: string) {
   try {
     const stripe = getStripe();
     const session = await stripe.checkout.sessions.retrieve(sessionId);
-    
+
     return {
       isComplete: session.payment_status === 'paid',
       metadata: session.metadata,

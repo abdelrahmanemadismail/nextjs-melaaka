@@ -21,14 +21,14 @@ function getLocalizedPath(path: string, locale: string) {
   if (path.startsWith(`/${locale}/`) || path === `/${locale}`) {
     return path;
   }
-  
+
   // If path starts with another locale, replace it
   for (const loc of i18n.locales) {
     if (path.startsWith(`/${loc}/`) || path === `/${loc}`) {
       return path.replace(`/${loc}`, `/${locale}`);
     }
   }
-  
+
   // Otherwise, prepend the current locale
   return path.startsWith('/') ? `/${locale}${path}` : `/${locale}/${path}`;
 }
@@ -37,13 +37,13 @@ export default async function Header() {
   const url = (await headers()).get('x-url')
   const locale = url?.split('/')[3] as Locale
   const t = await getTrans(locale);
-  
+
   // Get user profile from Supabase
   const supabase = await createClient()
 
   const { data: { user } } = await supabase.auth.getUser();
-  const { data: profile } = user ? 
-    await supabase.from('profiles').select('*').eq('id', user.id).single() : 
+  const { data: profile } = user ?
+    await supabase.from('profiles').select('*').eq('id', user.id).single() :
     { data: null };
 
   return (
@@ -55,7 +55,7 @@ export default async function Header() {
             <Link href={getLocalizedPath("/", locale)} className="flex-shrink-0" prefetch={true}>
               <Image
                 src="/logo.svg"
-                alt="ASWAQ Online"
+                alt="ASWAQDEAL"
                 width={100}
                 height={40}
                 className="h-16"
@@ -85,21 +85,21 @@ export default async function Header() {
               {/* Messages with Unread Count - Replace the old Messages button */}
               {profile && (
                 <div className="hidden md:flex">
-                  <ChatButton 
-                    path={getLocalizedPath("/chat", locale)} 
+                  <ChatButton
+                    path={getLocalizedPath("/chat", locale)}
                   />
                 </div>
               )}
 
               {/* User Menu if logged in */}
               {profile && <UserMenu />}
-              
+
               {/* Login Button - Hidden on mobile */}
               {!profile && (
                 <Link href={getLocalizedPath("/auth/login", locale)}>
-                  <Button 
-                    variant="primary_outline" 
-                    size="lg" 
+                  <Button
+                    variant="primary_outline"
+                    size="lg"
                     className="hidden md:flex"
                   >
                     {t.auth.login}
@@ -108,7 +108,7 @@ export default async function Header() {
               )}
 
               {/* Sell Button - Visible on both mobile and desktop */}
-              <Link 
+              <Link
                 href={profile ? getLocalizedPath("/sell", locale) : getLocalizedPath("/auth/signup", locale)}
               >
                 <Button size={profile ? "default" : "lg"} className="whitespace-nowrap">

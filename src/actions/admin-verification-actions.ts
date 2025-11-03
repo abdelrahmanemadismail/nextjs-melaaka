@@ -62,7 +62,7 @@ const sendVerificationStatusEmail = async (
   const transporter = await createTransporter()
   if (!transporter) return false
 
-  const systemFromEmail = process.env.SMTP_FROM_EMAIL || 'noreply@aswaq.online'
+  const systemFromEmail = process.env.SMTP_FROM_EMAIL || 'noreply@aswaqdeal.com'
   const status = request.verification_status === 'approved' ? 'approved' : 'rejected'
 
   try {
@@ -73,7 +73,7 @@ const sendVerificationStatusEmail = async (
       verified_by: request.verified_by ?? null,
       verified_at: request.verified_at ?? null
     } as VerificationRequest, request.user.full_name, locale)
-    
+
     await transporter.sendMail({
       from: systemFromEmail,
       to: userEmail,
@@ -94,7 +94,7 @@ export async function getVerificationRequests(
   search?: string,
   sort?: VerificationSort,
 ) {
-  
+
   const supabase = await createClient()
 
   const start = (page - 1) * limit
@@ -149,12 +149,12 @@ export async function getVerificationRequests(
   const { data, error } = await query.range(start, end)
 
   if (error) throw error
-  
+
   // Filter out any results where user is null
   const filteredData = (data as AdminVerificationRequest[]).filter(
     request => request.user !== null
   )
-  
+
   // Generate signed URLs for each document
   const requestsWithUrls = await Promise.all(
     filteredData.map(async (request) => {
@@ -194,7 +194,7 @@ export async function approveVerification(
   requestId: string,
   adminNotes?: string,
 ) {
-  
+
   const supabase = await createClient()
   const supabaseAdmin = supabaseClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -268,7 +268,7 @@ export async function rejectVerification(
   rejectionReason: string,
   adminNotes?: string,
 ) {
-  
+
   const supabase = await createClient()
   const supabaseAdmin = supabaseClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,

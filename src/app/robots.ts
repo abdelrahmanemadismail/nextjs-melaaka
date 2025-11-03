@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/admin/', '/api/', '/auth/signin', '/account/settings'],
     },
-    sitemap: 'https://aswaq.online/sitemap.xml',
+    sitemap: 'https://aswaqdeal.com/sitemap.xml',
   };
 }

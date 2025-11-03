@@ -2,8 +2,8 @@ import { MetadataRoute } from 'next';
 // import { Languages } from '@/constants/enums';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://aswaq.online';
-  
+  const baseUrl = 'https://aswaqdeal.com';
+
   // Define your main routes
   const routes = [
     '',
@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Generate sitemap entries for main routes in each language
   const sitemapEntries: MetadataRoute.Sitemap = [];
-  
+
   // Add entries for English
   routes.forEach(route => {
     sitemapEntries.push({
@@ -25,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: route === '' ? 1.0 : 0.8,
     });
   });
-  
+
   // Add entries for Arabic
   routes.forEach(route => {
     sitemapEntries.push({
@@ -35,7 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: route === '' ? 1.0 : 0.8,
     });
   });
-  
+
   // You can add dynamic routes from your database here
   // For example, if you have product pages:
   /*

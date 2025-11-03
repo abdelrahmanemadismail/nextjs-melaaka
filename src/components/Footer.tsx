@@ -40,7 +40,7 @@ const Footer = async () => {
     },
     {
       name: "Instagram",
-      url: "https://www.instagram.com/aswaq.online4",
+      url: "https://www.instagram.com/aswaqdeal.com4",
       icon: <InstagramLogo className="w-5 h-5" />,
       hoverColor: "group-hover:text-pink-600"
     },
@@ -52,19 +52,19 @@ const Footer = async () => {
     },
     {
       name: "TikTok",
-      url: "https://www.tiktok.com/@aswaq.online?is_from_webapp=1&sender_device=pc",
+      url: "https://www.tiktok.com/@aswaqdeal.com?is_from_webapp=1&sender_device=pc",
       icon: <TiktokIcon />,
       hoverColor: "group-hover:text-black"
     },
     {
       name: "Pinterest",
-      url: "https://www.pinterest.com/aswaqonline454/?invite_code=be0e1646502c4f98abf3f1dacef69390&sender=1147714423696409266",
+      url: "https://www.pinterest.com/aswaqdealcom454/?invite_code=be0e1646502c4f98abf3f1dacef69390&sender=1147714423696409266",
       icon: <PinterestIcon />,
       hoverColor: "group-hover:text-red-600"
     },
     {
       name: "Snapchat",
-      url: "https://www.snapchat.com/add/aswaq.online?share_id=H2liFY6OdyU&locale=ar-AE",
+      url: "https://www.snapchat.com/add/aswaqdeal.com?share_id=H2liFY6OdyU&locale=ar-AE",
       icon: <SnapchatIcon />,
       hoverColor: "group-hover:text-yellow-400"
     }
@@ -77,9 +77,9 @@ const Footer = async () => {
           {/* Left Column - Logo and Contact */}
           <div className="w-full mb-8 lg:mb-0 flex flex-col items-center lg:items-start md:items-start">
             <Link href={getLocalizedPath('/')} className="block mb-8">
-              <Image
+                <Image
                 src="/logo.svg"
-                alt="Aswaq Online"
+                alt="AswaqDeal"
                 width={150}
                 height={50}
                 className="h-auto"

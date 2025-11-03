@@ -1,8 +1,8 @@
 // app/contact/page.tsx
 import { Metadata } from "next";
 import { Mail } from "lucide-react";
-import { 
-  Card, 
+import {
+  Card,
   CardContent,
   CardDescription,
   CardHeader,
@@ -15,15 +15,15 @@ import { Locale } from "@/i18n.config";
 import getTrans from "@/utils/translation";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Aswaq Online",
-  description: "Get in touch with the Aswaq Online team. We're here to help with your questions and feedback.",
+  title: "Contact Us | AswaqDeal",
+  description: "Get in touch with the AswaqDeal team. We're here to help with your questions and feedback.",
 };
 
 export default async function ContactPage() {
   const url = (await headers()).get('x-url')
   const locale = url?.split('/')[3] as Locale
   const t = await getTrans(locale);
-  
+
   return (
       <main className="flex-1">
         {/* Page header */}
@@ -60,8 +60,8 @@ export default async function ContactPage() {
                       <div>
                         <CardTitle className="text-base mb-1">{t.contact.emailUs}</CardTitle>
                         <CardDescription>
-                          <a href="mailto:support@aswaq.online" className="text-primary2 hover:underline">
-                            support@aswaq.online
+                          <a href="mailto:support@aswaqdeal.com" className="text-primary2 hover:underline">
+                            support@aswaqdeal.com
                           </a>
                         </CardDescription>
                       </div>
@@ -88,7 +88,7 @@ export default async function ContactPage() {
                 {t.contact.faq.subtitle}
               </p>
             </div>
-            
+
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               <Card>
                 <CardHeader>
@@ -100,7 +100,7 @@ export default async function ContactPage() {
                   </p>
                 </CardContent>
               </Card>
-              
+
               <Card>
                 <CardHeader>
                   <CardTitle className="text-lg">{t.homepage.faq.listingDuration.question}</CardTitle>
@@ -111,7 +111,7 @@ export default async function ContactPage() {
                   </p>
                 </CardContent>
               </Card>
-              
+
               <Card>
                 <CardHeader>
                   <CardTitle className="text-lg">{t.homepage.faq.verifiedSeller.question}</CardTitle>
@@ -123,7 +123,7 @@ export default async function ContactPage() {
                 </CardContent>
               </Card>
             </div>
-            
+
             <div className="text-center mt-8">
               <Link href="/help">
                 {t.contact.faq.visitHelpCenter}

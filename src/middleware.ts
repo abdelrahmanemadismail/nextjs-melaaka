@@ -48,12 +48,12 @@ async function validateCountrySlug(supabase: ReturnType<typeof createServerClien
       .eq('slug', slug)
       .eq('is_active', true)
       .single()
-    
+
     if (error) {
       console.error('Error validating country slug:', error)
       return false
     }
-    
+
     return !!data
   } catch (error) {
     console.error('Exception validating country slug:', error)
@@ -68,7 +68,7 @@ async function getCountryFromIP(request: NextRequestWithGeo, supabase: ReturnTyp
     console.log('=== COUNTRY DETECTION DEBUG ===')
     console.log('NODE_ENV:', process.env.NODE_ENV)
     console.log('request.geo:', request.geo)
-    
+
     // Vercel Edge Functions provide the user's country.
     // In development, `request.geo` is not available, so we'll use a default.
     const countryCode = (process.env.NODE_ENV === 'development')
@@ -108,14 +108,29 @@ export async function middleware(request: NextRequestWithGeo) {
   console.log('=== MIDDLEWARE START ===')
   console.log('Request URL:', request.url)
   console.log('Request pathname:', request.nextUrl.pathname)
-  
+
+  // Allow metadata and static metadata routes to be served publicly without
+  // applying locale redirects or auth checks. This ensures /sitemap (and
+  // /sitemap.xml), /robots.txt, /manifest.* and similar metadata routes
+  // remain accessible to crawlers and external services (e.g., Googlebot).
+  // Use startsWith so variants like /sitemap.xml, /sitemap or /sitemap-index
+  // are all treated as public metadata routes.
+  const skipMetadataPrefixes = ['/sitemap', '/robots.txt', '/manifest.webmanifest', '/manifest.json', '/manifest'];
+  if (
+    skipMetadataPrefixes.some(p => request.nextUrl.pathname === p || request.nextUrl.pathname.startsWith(p)) ||
+    request.nextUrl.pathname.startsWith('/.well-known')
+  ) {
+    console.log('Bypassing middleware for metadata/static route:', request.nextUrl.pathname)
+    return NextResponse.next()
+  }
+
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-url", request.url);
 
   // Check for existing country preference BEFORE creating Supabase client
   const preferredCountry = request.cookies.get('preferred-country')?.value
   console.log('Existing preferred-country cookie:', preferredCountry)
-  
+
   // Initialize response variable
 // eslint-disable-next-line prefer-const
   let response = NextResponse.next({
@@ -154,10 +169,10 @@ export async function middleware(request: NextRequestWithGeo) {
   if (!preferredCountry) {
     console.log('No preferred country found, attempting IP detection...')
     const countrySlug = await getCountryFromIP(request, supabase)
-    
+
     if (countrySlug) {
       console.log('Setting country cookie to:', countrySlug)
-      
+
       // Set the cookie on the response
       response.cookies.set('preferred-country', countrySlug, {
         maxAge: 60 * 60 * 24 * 365, // 1 year
@@ -165,7 +180,7 @@ export async function middleware(request: NextRequestWithGeo) {
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'lax'
       })
-      
+
       console.log('Country cookie set successfully')
     } else {
       console.log('Could not detect country from IP')
@@ -183,7 +198,7 @@ export async function middleware(request: NextRequestWithGeo) {
   if (switchCountryParam) {
     console.log('Country switch requested:', switchCountryParam)
     const isValidCountry = await validateCountrySlug(supabase, switchCountryParam)
-    
+
     if (isValidCountry) {
       console.log('Valid country, redirecting and setting cookie')
       // Create a response to redirect to the same page but without the setCountry param

@@ -1,6 +1,6 @@
 import { ContactFormData } from '@/actions/contact-actions'
 import { VerificationRequest } from '@/types/verification'
-import { 
+import {
   supportNotificationTemplate,
   userConfirmationTemplate,
   verificationRequestTemplate,
@@ -83,7 +83,7 @@ export async function prepareUserConfirmationEmail(
 ): Promise<string> {
   const t = translations[locale as keyof typeof translations]
   const isRtl = locale === 'ar'
-  
+
   const variables = {
     locale,
     direction: isRtl ? 'rtl' : 'ltr',
@@ -99,7 +99,7 @@ export async function prepareUserConfirmationEmail(
     team: t.team,
     year: new Date().getFullYear(),
     copyright: isRtl ? 'جميع الحقوق محفوظة' : 'All rights reserved',
-    automatedMessage: isRtl 
+    automatedMessage: isRtl
       ? 'هذه رسالة آلية من نظام الإشعارات الآمن الخاص بنا.'
       : 'This is an automated message from our secure notification system.'
   }
@@ -139,7 +139,7 @@ export async function prepareVerificationStatusEmail(
         message: 'Your verification request has been approved. You can now access all verified user features.',
         actionLabel: 'Go to Dashboard',
         closing: 'Best regards,',
-        team: 'The Aswaq Online Team'
+  team: 'The AswaqDeal Team'
       },
       rejected: {
         title: 'Verification Request Rejected',
@@ -149,7 +149,7 @@ export async function prepareVerificationStatusEmail(
         adminNotesLabel: 'Additional Notes',
         actionLabel: 'Submit New Request',
         closing: 'Best regards,',
-        team: 'The Aswaq Online Team'
+  team: 'The AswaqDeal Team'
       }
     },
     ar: {
@@ -159,7 +159,7 @@ export async function prepareVerificationStatusEmail(
         message: 'تم قبول طلب التحقق الخاص بك. يمكنك الآن الوصول إلى جميع ميزات المستخدم المتحقق منه.',
         actionLabel: 'الذهاب إلى لوحة التحكم',
         closing: 'مع أطيب التحيات،',
-        team: 'فريق أسواق أونلاين'
+  team: 'فريق AswaqDeal'
       },
       rejected: {
         title: 'تم رفض طلب التحقق',
@@ -169,7 +169,7 @@ export async function prepareVerificationStatusEmail(
         adminNotesLabel: 'ملاحظات إضافية',
         actionLabel: 'تقديم طلب جديد',
         closing: 'مع أطيب التحيات،',
-        team: 'فريق أسواق أونلاين'
+  team: 'فريق AswaqDeal'
       }
     }
   }
@@ -179,15 +179,15 @@ export async function prepareVerificationStatusEmail(
 
   // Create message blocks based on status and available information
   let messageContent = `${t.greeting}\n\n${t.message}\n\n`
-  
+
   if (status === 'rejected' && request.rejection_reason) {
     messageContent += `${(t as typeof translations.en.rejected).rejectionReasonLabel}:\n${request.rejection_reason}\n\n`
   }
-  
+
   if (request.admin_notes) {
     messageContent += `${(t as typeof translations.en.rejected).adminNotesLabel}:\n${request.admin_notes}\n\n`
   }
-  
+
   messageContent += `${t.closing}\n${t.team}`
 
   const variables: TemplateVariables = {
@@ -200,11 +200,11 @@ export async function prepareVerificationStatusEmail(
     actionLabel: t.actionLabel,
     year: new Date().getFullYear(),
     copyright: isRtl ? 'جميع الحقوق محفوظة' : 'All rights reserved',
-    automatedMessage: isRtl 
+    automatedMessage: isRtl
       ? 'هذه رسالة آلية من نظام الإشعارات الآمن الخاص بنا.'
       : 'This is an automated message from our secure notification system.',
     messageContent: messageContent.replace(/\n/g, '<br>')
   }
 
   return renderEmailTemplate(verificationStatusTemplate, variables)
-} 
+}

@@ -9,7 +9,7 @@ import Link from "next/link";
 import { headers } from "next/headers";
 
 export const metadata: Metadata = {
-  title: "Settings | Aswaq Online",
+  title: "Settings | AswaqDeal",
   description: "Manage your account settings and preferences",
 };
 
@@ -48,8 +48,8 @@ export default async function SettingsPage() {
         <CardHeader className="p-4 md:p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between">
           <CardTitle className="text-lg md:text-xl">{t.settings?.email?.title || "Email Address"}</CardTitle>
           <div className="mt-3 sm:mt-0 w-full sm:w-auto">
-            <Link 
-              className={buttonClass} 
+            <Link
+              className={buttonClass}
               href={getLocalizedPath("/auth/change-email")}
             >
               {t.settings?.email?.button || "Change Email"}
@@ -63,7 +63,7 @@ export default async function SettingsPage() {
         <CardHeader className="p-4 md:p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between">
           <CardTitle className="text-lg md:text-xl">{t.settings?.password?.title || "Password"}</CardTitle>
           <div className="mt-3 sm:mt-0 w-full sm:w-auto">
-            <Link 
+            <Link
               className={buttonClass}
               href={getLocalizedPath("/auth/reset-password")}
             >
@@ -78,7 +78,7 @@ export default async function SettingsPage() {
         <CardHeader className="p-4 md:p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between">
           <CardTitle className="text-lg md:text-xl">{t.settings?.phone?.title || "Phone Number"}</CardTitle>
           <div className="mt-3 sm:mt-0 w-full sm:w-auto">
-            <Link 
+            <Link
               className={buttonClass}
               href={getLocalizedPath("/auth/phone-verification")}
             >

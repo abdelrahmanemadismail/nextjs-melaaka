@@ -131,7 +131,7 @@ export default async function LandingPage({
 </div>
 
       </div>
-      
+
 
       <main className="flex-1">
         {/* Enhanced Hero Section - Redesigned to match provided image */}
@@ -161,7 +161,7 @@ export default async function LandingPage({
               </p>
               <Link
                 href={user ? "/sell" : "/auth/signup"}
-                className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg rounded-lg px-8 py-4 shadow-lg transition-colors"
+                className="inline-block bg-primary2 hover:bg-primary2/80 text-white font-semibold text-lg rounded-lg px-8 py-4 shadow-lg transition-colors"
               >
                 {t.homepage.sellButton}
               </Link>

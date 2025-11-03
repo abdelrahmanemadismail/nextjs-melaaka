@@ -49,7 +49,7 @@ const prepareUnreadMessageEmail = (data: UnreadMessageEmailData, locale: string 
   // Simple localization for notification email
   const translations = {
     en: {
-      subject: 'New Message on Aswaq Online',
+      subject: 'New Message on AswaqDeal',
       newMessage: 'New Message',
       from: 'From',
       regarding: 'Regarding',
@@ -57,11 +57,11 @@ const prepareUnreadMessageEmail = (data: UnreadMessageEmailData, locale: string 
       viewConversation: 'View Conversation',
       unreadMessage: 'You have an unread message',
       notReceiveUpdates: 'If you don\'t want to receive email updates, you can change your notification settings in your account preferences.',
-      team: 'The Aswaq Online Team',
+      team: 'The AswaqDeal Team',
       automaticMessage: 'This is an automated message from our secure notification system.'
     },
     ar: {
-      subject: 'رسالة جديدة على أسواق أونلاين',
+  subject: 'رسالة جديدة على AswaqDeal',
       newMessage: 'رسالة جديدة',
       from: 'من',
       regarding: 'بخصوص',
@@ -69,7 +69,7 @@ const prepareUnreadMessageEmail = (data: UnreadMessageEmailData, locale: string 
       viewConversation: 'عرض المحادثة',
       unreadMessage: 'لديك رسالة غير مقروءة',
       notReceiveUpdates: 'إذا كنت لا ترغب في تلقي تحديثات البريد الإلكتروني، يمكنك تغيير إعدادات الإشعارات في تفضيلات حسابك.',
-      team: 'فريق أسواق أونلاين',
+  team: 'فريق AswaqDeal',
       automaticMessage: 'هذه رسالة آلية من نظام الإشعارات الآمن الخاص بنا.'
     }
   }
@@ -79,7 +79,7 @@ const prepareUnreadMessageEmail = (data: UnreadMessageEmailData, locale: string 
   const direction = isRtl ? 'rtl' : 'ltr'
   const textAlign = isRtl ? 'right' : 'left'
   const year = new Date().getFullYear()
-  const appUrl = process.env.NEXT_PUBLIC_URL || 'https://aswaq.online'
+  const appUrl = process.env.NEXT_PUBLIC_URL || 'https://aswaqdeal.com'
 
   // Create a safe message preview (limit length and escape HTML)
   const safeMessagePreview = data.messagePreview
@@ -117,20 +117,20 @@ const prepareUnreadMessageEmail = (data: UnreadMessageEmailData, locale: string 
         <div class="content">
           <h1>${t.newMessage}</h1>
           <div class="divider"></div>
-          
+
           <p><strong>${t.from}:</strong> ${data.senderName}</p>
-          
+
           ${data.listingTitle ? `<p><strong>${t.regarding}:</strong> ${data.listingTitle}</p>` : ''}
-          
+
           <div class="message-box">
             <p><strong>${t.messagePreview}:</strong></p>
             <p>${safeMessagePreview}</p>
           </div>
-          
+
           <center>
             <a href="${appUrl}/chat?id=${data.conversationId}" class="button">${t.viewConversation}</a>
           </center>
-          
+
           <p style="color: #718096; font-size: 14px; margin-top: 30px; text-align: center;">
             ${t.notReceiveUpdates}
           </p>
@@ -138,7 +138,7 @@ const prepareUnreadMessageEmail = (data: UnreadMessageEmailData, locale: string 
 
         <div class="footer">
           <p style="margin-bottom: 5px;">
-            &copy; ${year} Aswaq.online. ${isRtl ? 'جميع الحقوق محفوظة' : 'All rights reserved'}
+            &copy; ${year} Aswaqdeal.com. ${isRtl ? 'جميع الحقوق محفوظة' : 'All rights reserved'}
           </p>
           <p style="margin-top: 0;">
             ${t.automaticMessage}
@@ -157,19 +157,19 @@ const sendUnreadMessageNotification = async (data: UnreadMessageEmailData, local
 
   try {
     const emailHtml = prepareUnreadMessageEmail(data, locale)
-    
+
     const translations = {
-      en: { subject: 'New Message on Aswaq Online' },
-      ar: { subject: 'رسالة جديدة على أسواق أونلاين' }
+  en: { subject: 'New Message on AswaqDeal' },
+  ar: { subject: 'رسالة جديدة على AswaqDeal' }
     }
-    
+
     await transporter.sendMail({
       from: process.env.SMTP_FROM_EMAIL,
       to: data.recipientEmail,
       subject: translations[locale as keyof typeof translations]?.subject || translations.en.subject,
       html: emailHtml
     })
-    
+
     return true
   } catch (error) {
     console.error('Failed to send unread message notification email:', error)
@@ -180,14 +180,14 @@ const sendUnreadMessageNotification = async (data: UnreadMessageEmailData, local
 // Check for unread messages and send notifications
 export async function checkAndSendUnreadMessageNotifications() {
   const supabase = await createClient()
-  
+
   try {
     // Get current timestamp
     const now = new Date()
-    
+
     // Calculate timestamp for messages that were sent at least 5 minutes ago
     const fiveMinutesAgo = new Date(now.getTime() - 5 * 60 * 1000).toISOString()
-    
+
     // Get unread messages that are at least 5 minutes old and haven't been notified yet
     const { data: unreadMessages, error } = await supabase
       .from('messages')
@@ -223,19 +223,19 @@ export async function checkAndSendUnreadMessageNotifications() {
       .is('notification_sent', null) // Add this column to your messages table
       .lt('created_at', fiveMinutesAgo)
       .order('created_at', { ascending: true })
-    
+
     if (error) {
       console.error('Error fetching unread messages:', error)
       return false
     }
-    
+
     if (!unreadMessages || unreadMessages.length === 0) {
       console.log('No unread messages to notify about')
       return true
     }
-    
+
     console.log(`Found ${unreadMessages.length} unread messages to send notifications for`)
-    
+
     // Process each message and send notification
     for (const message of unreadMessages) {
       // Determine recipient (the user who should receive the notification)
@@ -243,31 +243,31 @@ export async function checkAndSendUnreadMessageNotifications() {
         buyer: { id: string; full_name: string; email: string; notification_preferences?: { chat_email: boolean }; locale?: string };
         seller: { id: string; full_name: string; email: string; notification_preferences?: { chat_email: boolean }; locale?: string };
       }
-      
+
       // Skip if conversation or participants are missing
       if (!conversation || !conversation.buyer || !conversation.seller) {
         console.error(`Missing conversation data for message ${message.id}`)
         continue
       }
-      
+
       // Determine recipient and sender based on sender_id
       const isSenderBuyer = message.sender_id === conversation.buyer.id
       const recipient = isSenderBuyer ? conversation.seller : conversation.buyer
       const sender = isSenderBuyer ? conversation.buyer : conversation.seller
-      
+
       // Skip if recipient has disabled chat email notifications
       if (recipient.notification_preferences?.chat_email === false) {
         console.log(`Recipient ${recipient.id} has disabled chat email notifications`)
-        
+
         // Mark as notification sent anyway to prevent checking again
         await supabase
           .from('messages')
           .update({ notification_sent: new Date().toISOString() })
           .eq('id', message.id)
-        
+
         continue
       }
-      
+
       // Prepare email data
       const emailData: UnreadMessageEmailData = {
         recipientId: recipient.id,
@@ -277,16 +277,16 @@ export async function checkAndSendUnreadMessageNotifications() {
         conversationId: message.conversation_id,
         listingTitle: conversation.listing?.title
       }
-      
+
       // Get recipient's preferred locale
       const locale = recipient.locale || 'en'
-      
+
       // Send notification email
       const emailSent = await sendUnreadMessageNotification(emailData, locale)
-      
+
       if (emailSent) {
         console.log(`Sent unread message notification to ${recipient.email} for message ${message.id}`)
-        
+
         // Mark message as notification sent
         await supabase
           .from('messages')
@@ -294,7 +294,7 @@ export async function checkAndSendUnreadMessageNotifications() {
           .eq('id', message.id)
       }
     }
-    
+
     return true
   } catch (error) {
     console.error('Error processing unread message notifications:', error)
