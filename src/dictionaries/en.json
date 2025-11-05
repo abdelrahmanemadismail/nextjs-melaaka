@@ -24,11 +24,11 @@
     "no": "No",
     "sell": "Sell",
     "toggleMenu": "Toggle menu",
-  "aswaqMenu": "ASWAQDEAL Menu",
+  "aswaqMenu": "MELAAKA Menu",
     "error": "Error",
     "unexpectedError": "An unexpected error occurred",
     "processing": "Processing...",
-  "aswaqOnline": "AswaqDeal",
+  "aswaqOnline": "Melaaka",
     "success": "Success",
     "somethingWentWrong": "Something went wrong. Please try again.",
     "you": "You",
@@ -57,7 +57,7 @@
     "signup": "Sign Up",
     "logout": "Logout",
     "forgotPassword": "Forgot Password",
-    "continueToAswaq": "Continue to ASWAQ",
+    "continueToAswaq": "Continue to MELAAKA",
     "agreementPrefix": "By clicking continue, you agree to our",
     "agreementConnector": "and",
     "changeEmailAddress": "Change Email Address",
@@ -96,7 +96,7 @@
     "rememberPassword": "Remember your password?",
     "resetInstructionsError": "Failed to send reset instructions. Please try again.",
     "resetInstructionsSent": "Password reset instructions have been sent to your email.",
-    "createAswaqAccount": "Create your ASWAQ account",
+    "createAswaqAccount": "Create your MELAAKA account",
     "fullName": "Full Name",
     "enterFullName": "Enter your full name",
     "phone": "Phone Number",
@@ -161,14 +161,14 @@
     "validFor": "Valid for",
     "featuredListings": "Featured listings",
     "chooseYourPackage": "Choose Your Package",
-  "selectPerfectPlan": "Select the perfect plan to start your journey with ASWAQDEAL",
+  "selectPerfectPlan": "Select the perfect plan to start your journey with MELAAKA",
     "freeTierPackages": "Free Tier Packages",
     "durationBasedPackages": "Duration-Based Packages",
     "bulkPackages": "Bulk Packages",
     "unlimitedPackages": "Unlimited Packages",
     "success": {
       "title": "Payment Confirmation",
-  "subtitle": "ASWAQDEAL Package Purchase",
+  "subtitle": "MELAAKA Package Purchase",
       "processing": "Processing your payment...",
       "pleaseWait": "Please wait while we confirm your payment.",
       "successTitle": "Payment Successful!",
@@ -200,7 +200,7 @@
     "callSeller": "Call seller",
     "whatsappNotAvailable": "WhatsApp number not available",
     "messageOnWhatsapp": "Message on WhatsApp",
-    "whatsappMessage": "Hi, I'm interested in your listing: \"{listingTitle}\" on Aswaq",
+    "whatsappMessage": "Hi, I'm interested in your listing: \"{listingTitle}\" on Melaaka",
     "success": "Success!",
     "listingPublished": "Your listing has been published.",
     "failedToCreate": "Failed to create listing. Please try again.",
@@ -397,7 +397,7 @@
   "homepage": {
     "heroTitle": "Buy -Sell -Promote",
     "heroTitleHighlight": "Near You",
-    "heroSubtitle": "Join hundreds of locals using Aswaq to buy, sell, and promote everything fast. No card needed.",
+    "heroSubtitle": "Join hundreds of locals using Melaaka to buy, sell, and promote everything fast. No card needed.",
     "sellButton":"Start Selling Now!",
     "sellButtonAnnounce":"+ new items listed today",
     "statistics": {
@@ -411,7 +411,7 @@
       "button":"Sign Up Now →"
     },
     "howItWorks": {
-  "title": "How ASWAQDEAL Works",
+  "title": "How MELAAKA Works",
       "subtitle": "Start buying or selling in three simple steps",
       "step1": {
         "step": "1",
@@ -430,7 +430,7 @@
       }
     },
     "whyChooseUs": {
-  "title": "Why Choose ASWAQDEAL",
+  "title": "Why Choose MELAAKA",
       "subtitle": "Discover the features that make us the leading marketplace",
       "secureTransactions": {
         "title": "Secure Transactions",
@@ -451,7 +451,7 @@
     },
     "faq": {
       "title": "Frequently Asked Questions",
-  "subtitle": "Find answers to common questions about ASWAQDEAL",
+  "subtitle": "Find answers to common questions about MELAAKA",
       "createListing": {
         "question": "How do I create a listing?",
         "answer": "Creating a listing is simple! Click the 'Sell' button, choose your category, fill in the details, add photos, and publish."
@@ -481,7 +481,7 @@
     "termsOfUse": "Terms of use",
     "termsOfService": "Terms of Service",
     "privacyPolicy": "Privacy Policy",
-    "copyright": "© {year} Aswaq. All rights reserved."
+    "copyright": "© {year} Melaaka. All rights reserved."
   },
   "images": {
     "cropProfilePicture": "Crop Profile Picture",
@@ -492,8 +492,8 @@
     "storyTitle": "How we came out?",
     "buildingTitle": "Building the Dream",
     "buildingContent": "Abdul gathered a dedicated team of developers, marketers, and logistics experts. They worked hard to turn his vision into reality, aiming to make the digital marketplace accessible not only in affluent cities but also in remote towns. Their mission was to combine the rich cultural heritage of the Middle East with modern technology, crafting a unique e-commerce experience that was both local and globally competitive.",
-    "logoAlt": "ASWAQ Logo",
-    "coverageTitle": "ASWAQ in the Middle East and North Africa.",
+    "logoAlt": "MELAAKA Logo",
+    "coverageTitle": "MELAAKA in the Middle East and North Africa.",
     "features": {
       "customerTrust": {
         "title": "Customer Trust",
@@ -514,7 +514,7 @@
     "subtitle": "Have questions or feedback? We'd love to hear from you.",
     "getInTouch": {
       "title": "Get in Touch",
-  "description": "Our team is here to help with any questions you might have about using Aswaqdeal.com. Whether you need assistance with your account, listings, or have feedback to share, we're just a message away."
+  "description": "Our team is here to help with any questions you might have about using Melaaka.com. Whether you need assistance with your account, listings, or have feedback to share, we're just a message away."
     },
     "emailUs": "Email Us",
     "form": {
@@ -616,7 +616,7 @@
     "savedPreferences": "Your notification preferences have been saved.",
     "generalProducts": {
       "title": "General information about products and services",
-      "description": "Receive updates about new products and services on Aswaaq"
+      "description": "Receive updates about new products and services on Melaaka"
     },
     "adsInterested": {
       "title": "Informations about Ads I'm interested in",
@@ -724,7 +724,7 @@
   "frontId": "Front ID",
   "backId": "Back ID",
   "passportPhoto": "Take Passport Photo",
-  "securityNote": "ASWAQ verified is an exclusive service. Your data will be processed securely & will not be disclosed to any third party.",
+  "securityNote": "MELAAKA verified is an exclusive service. Your data will be processed securely & will not be disclosed to any third party.",
   "fraudPrevention": "This helps us prevent anyone from creating fake accounts using your details",
   "continue": "Continue",
   "submitting": "Submitting...",
