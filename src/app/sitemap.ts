@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 // import { Languages } from '@/constants/enums';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://aswaqdeal.com';
+  const baseUrl = 'https://melaaka.com';
 
   // Define your main routes
   const routes = [

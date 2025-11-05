@@ -55,7 +55,7 @@ export async function generateMetadata({
   const locale = (await params).locale;
 
   const shared = {
-  metadataBase: new URL('https://aswaqdeal.com'),
+  metadataBase: new URL('https://melaaka.com'),
     icons: {
       icon: '/favicon.ico',
       apple: '/apple-icon.png',
@@ -78,7 +78,7 @@ export async function generateMetadata({
     verification: {
       google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION, // Add Google Search Console verification
     },
-  authors: [{ name: 'AswaqDeal' }], // Add author information
+  authors: [{ name: 'Melaaka' }], // Add author information
     category: 'online marketplace',
   };
 
@@ -113,38 +113,38 @@ export async function generateMetadata({
       ...shared,
       robots: defaultRobots,
       title: {
-  default: 'AswaqDeal | أسرع طريقة للبيع والشراء في الإمارات',
-  template: '%s | AswaqDeal',
+  default: 'Melaaka | أسرع طريقة للبيع والشراء في الإمارات',
+  template: '%s | Melaaka',
       },
       description:
-  'بع بسرعة وسهولة في الإمارات مع AswaqDeal! أسرع طريقة لبيع السيارات، الإلكترونيات، الأزياء والمزيد في دبي وجميع أنحاء الإمارات. بدون عمولة وبأسعار اشتراك منخفضة.',
+  'بع بسرعة وسهولة في الإمارات مع Melaaka! أسرع طريقة لبيع السيارات، الإلكترونيات، الأزياء والمزيد في دبي وجميع أنحاء الإمارات. بدون عمولة وبأسعار اشتراك منخفضة.',
       keywords: [
         'شراء وبيع في الإمارات', 'سوق إلكتروني', 'بيع سيارات في دبي',
-  'شراء إلكترونيات مستعملة', 'بيع ملابس مقابل النقد', 'بيع أثاث مستعمل', 'AswaqDeal', 'AswaqDeal',
+  'شراء إلكترونيات مستعملة', 'بيع ملابس مقابل النقد', 'بيع أثاث مستعمل', 'Melaaka', 'ميلاكا',
         'سوق دبي', 'موقع إعلانات مجاني', 'سوق أبو ظبي', 'بدون عمولة'
       ],
       openGraph: {
-  title: 'AswaqDeal | أسرع طريقة للبيع والشراء في الإمارات',
+  title: 'Melaaka | أسرع طريقة للبيع والشراء في الإمارات',
         description:
-      'بع بسرعة وسهولة في الإمارات مع AswaqDeal! أسرع طريقة لبيع السيارات، الإلكترونيات، الأزياء والمزيد. بدون عمولة وبأسعار اشتراك منخفضة.',
-  url: 'https://aswaqdeal.com/ar',
-  siteName: 'AswaqDeal',
+      'بع بسرعة وسهولة في الإمارات مع Melaaka! أسرع طريقة لبيع السيارات، الإلكترونيات، الأزياء والمزيد. بدون عمولة وبأسعار اشتراك منخفضة.',
+  url: 'https://melaaka.com/ar',
+  siteName: 'Melaaka',
         locale: 'ar_AE',
         type: 'website',
         images: [
           {
-            url: 'https://aswaqdeal.com/og-image.png',
+            url: 'https://melaaka.com/og-image.png',
             width: 1200,
             height: 630,
-            alt: 'AswaqDeal - سوق الإمارات',
+            alt: 'Melaaka - سوق الإمارات',
           },
         ],
       },
       twitter: {
         card: 'summary_large_image',
-        title: 'AswaqDeal | سوق الإمارات الإلكتروني',
+        title: 'Melaaka | سوق الإمارات الإلكتروني',
         description: 'سوق الإمارات الإلكتروني الرائد - بيع واشتري بسهولة وأمان',
-  images: ['https://aswaqdeal.com/twitter-image-ar.jpg'],
+  images: ['https://melaaka.com/twitter-image-ar.jpg'],
       },
     };
   }
@@ -153,39 +153,39 @@ export async function generateMetadata({
     ...shared,
     robots: defaultRobots,
     title: {
-  default: 'AswaqDeal | Fastest Way to Buy & Sell in UAE',
-  template: '%s | AswaqDeal',
+  default: 'Melaaka | Fastest Way to Buy & Sell in UAE',
+  template: '%s | Melaaka',
     },
     description:
-  'Sell Fast & Easy in UAE with AswaqDeal! The fastest way to sell cars, electronics, fashion, and more in Dubai and across the UAE. Commission-free with the cheapest subscription rates.',
+  'Sell Fast & Easy in UAE with Melaaka! The fastest way to sell cars, electronics, fashion, and more in Dubai and across the UAE. Commission-free with the cheapest subscription rates.',
     keywords: [
       'Buy and sell in UAE', 'Online marketplace UAE', 'Sell cars fast in Dubai',
-  'Cash for phones UAE', 'Sell clothes online', 'Used furniture UAE','AswaqDeal',
+  'Cash for phones UAE', 'Sell clothes online', 'Used furniture UAE','Melaaka',
       'Cheap phones UAE', 'Cheap cars UAE', 'Dubai marketplace', 'Abu Dhabi classifieds',
       'Second hand items UAE', 'Commission-free marketplace'
     ],
     openGraph: {
-  title: 'AswaqDeal | Fastest Way to Buy & Sell in UAE',
+  title: 'Melaaka | Fastest Way to Buy & Sell in UAE',
       description:
-        "Sell Fast & Easy in UAE with AswaqDeal! The fastest way to sell cars, electronics, fashion, and more in Dubai and across the UAE. Enjoy the cheapest subscription rates and reach trusted buyers instantly.",
-      url: 'https://aswaqdeal.com/en',
-      siteName: 'AswaqDeal',
+        "Sell Fast & Easy in UAE with Melaaka! The fastest way to sell cars, electronics, fashion, and more in Dubai and across the UAE. Enjoy the cheapest subscription rates and reach trusted buyers instantly.",
+      url: 'https://melaaka.com/en',
+      siteName: 'Melaaka',
       locale: 'en_US',
       type: 'website',
       images: [
         {
-          url: 'https://aswaqdeal.com/og-image.png',
+          url: 'https://melaaka.com/og-image.png',
           width: 1200,
           height: 630,
-          alt: 'AswaqDeal - UAE Marketplace',
+          alt: 'Melaaka - UAE Marketplace',
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-  title: 'AswaqDeal | UAE Marketplace',
+  title: 'Melaaka | UAE Marketplace',
       description: 'Leading UAE online marketplace - Buy & sell easily and safely',
-  images: ['https://aswaqdeal.com/twitter-image.jpg'],
+  images: ['https://melaaka.com/twitter-image.jpg'],
     },
   };
 }
@@ -220,13 +220,13 @@ export default async function RootLayout({
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Organization',
-            name: 'AswaqDeal',
-            url: 'https://aswaqdeal.com',
-            logo: 'https://aswaqdeal.com/logo.png',
+            name: 'Melaaka',
+            url: 'https://melaaka.com',
+            logo: 'https://melaaka.com/logo.png',
             sameAs: [
-              'https://www.facebook.com/aswaqonline',
-              'https://www.instagram.com/aswaqdeal.com',
-              'https://twitter.com/aswaqonline'
+              'https://www.facebook.com/melaaka',
+              'https://www.instagram.com/melaaka.com',
+              'https://twitter.com/melaaka'
             ],
             contactPoint: {
               '@type': 'ContactPoint',
@@ -245,11 +245,11 @@ export default async function RootLayout({
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'WebSite',
-            name: 'AswaqDeal',
-            url: 'https://aswaqdeal.com',
+            name: 'Melaaka',
+            url: 'https://melaaka.com',
             potentialAction: {
               '@type': 'SearchAction',
-              target: 'https://aswaqdeal.com/search?q={search_term_string}',
+              target: 'https://melaaka.com/search?q={search_term_string}',
               'query-input': 'required name=search_term_string'
             }
           })
