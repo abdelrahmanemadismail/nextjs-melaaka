@@ -50,7 +50,10 @@
     "notifications": "Notifications",
     "messages": "Messages",
     "attachFile":"Attach file",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "currency": "AED",
+    "currencySymbol": "د.إ",
+    "currencyName": "UAE Dirham"
   },
   "auth": {
     "login": "Login",

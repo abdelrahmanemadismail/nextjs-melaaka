@@ -50,7 +50,10 @@
     "notifications": "الإشعارات",
     "messages": "الرسائل",
     "attachFile":"إرفاق ملف",
-    "loading": "جار التحميل..."
+    "loading": "جار التحميل...",
+    "currency": "AED",
+    "currencySymbol": "د.إ",
+    "currencyName": "درهم إماراتي"
   },
   "auth": {
     "login": "تسجيل الدخول",
