@@ -2,7 +2,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 import { CheckCircle2 } from 'lucide-react';
 import StripeCheckoutButton from './StripeCheckoutButton';
 import { Button } from '../ui/button';
-import { CURRENCY } from "@/constants/enums";
+// import { CURRENCY } from "@/constants/enums";
 // import { toast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { headers } from 'next/headers';
